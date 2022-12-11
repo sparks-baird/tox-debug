@@ -72,6 +72,7 @@ jobs:
       - name: Print tox version, install new, then print version again
         run: |
           pipx run tox --version
+          pipx uninstall tox
           pipx install tox==v4.0.0rc4
           pipx run tox --version
       - name: Run tests
