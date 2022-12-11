@@ -33,12 +33,10 @@ jobs:
         with: {fetch-depth: 0}  # deep clone for setuptools-scm
       - uses: actions/setup-python@v4
         with: {python-version: "3.10"}
-      - name: check tox installed
-        run: tox
       - name: Run static analysis and format checkers
         run: pipx run pre-commit run --all-files --show-diff-on-failure
       - name: Build package distribution files
-        run: pipx run tox -e clean,build
+        run: pipx run --spec tox==3.27.1 tox -e clean,build
       - name: Record the path of wheel distribution
         id: wheel-distribution
         run: echo "::set-output name=path::$(ls dist/*.whl)"
