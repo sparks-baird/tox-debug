@@ -69,11 +69,6 @@ jobs:
       - name: Retrieve pre-built distribution files
         uses: actions/download-artifact@v3
         with: {name: python-distribution-files, path: dist/}
-      - name: Print tox version, install new, then print version again
-        run: |
-          pipx run tox --version
-          pipx install tox==v4.0.0rc4
-          pipx run tox --version
       - name: Run tests
         run: >-
           pipx run tox
